@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="m-0 p-0">
+    <!-- Navigation Bar Area -->
+    <header class="py-5 px-5 relative">
+        <!-- Hamburger -->
+            <ul class="hamburger hidden  opacity-0 text-white bg-black p-10 absolute top-0 -left-48 w-1/4 h-dvh m-0 z-10 duration-300 ease-linear">
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><span class="close absolute top-0 right-0 p-5 text-white cursor-pointer" href="">X</span></li>
+            </ul>
+        <div class="container mx-auto">
+            <!-- Navbar -->
+            <div class="flex items-center justify-between relative">
+                <!-- Nav Left -->
+                <div class="flex items-center gap-8">
+                    <button id="menu" href=""><img class="rounded-none" src="assets/img/icon-menu.svg" alt=""></button>
+                    <a href=""><img class="rounded-none" src="assets/img/logo.svg" alt="Logo"></a>
+                </div>
+                <!-- Nav Right -->
+                <div class="flex items-center gap-8">
+                    <button id="cartButton" href=""><img class="rounded-none" src="assets/img/icon-cart.svg" alt=""><sup id="sup" class="text-base font-bold text-primary p-1"></sup></button>
+                    <button id="avatar" href=""><img class="w-[50px] rounded-none" src="assets/img/image-avatar.png" alt=""></button>
+                </div>
+                <!-- Cart Item -->
+                <div id="cart" class="hidden absolute top-20 left-0 right-0 bg-white p-7 rounded-xl capitalize z-10">
+                    <h4 class="text-xl font-bold pb-3 m-0">cart</h4>
+                    <div class="cartAllItems">
+                        <!-- Single Cart -->
+                        <ul class="cartItem flex items-center justify-between">
+                            <li><img class="w-[60px] rounded-lg" src="assets/img/image-product-1-thumbnail.jpg" alt=""></li>
+                            <li>
+                                <h4 class="text-base text-dark-grey-blue">fall puma limited edition shoe <br> $<span class="cartPrice">30</span> x <span class="cartQuantity">5</span> = <span class="cartTotal text-black text-lg font-bold"></span></h4>
+                            </li>
+                            <li><button class='deleteCart' href=""><img src="assets/img/icon-delete.svg" alt=""></button></li>
+                        </ul>
+                    </div>
+                    <button id="purchase" class="block w-full text-center bg-primary text-white rounded-xl border-none text-lg font-semibold py-3 mt-3">purchase</button>
+                </div>    
+            </div>
+        </div>
+    </header>
+    <!-- Cart Area -->
+    <section>
+        <div class="container mx-auto">
+            <!-- Cart -->
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:p-20 relative">
+                <!-- Cart Image -->
+                <div class="cartImage flex flex-col items-center justify-start gap-5 lg:max-w-[550px]">
+                    <img id="mainImage" src="assets/img/image-product-1.jpg" alt="">
+                    <div class="thumbImages hidden md:flex justify-between w-full">
+                        <img src="assets/img/image-product-1-thumbnail.jpg" alt="">
+                        <img src="assets/img/image-product-2-thumbnail.jpg" alt="">
+                        <img src="assets/img/image-product-3-thumbnail.jpg" alt="">
+                        <img src="assets/img/image-product-4-thumbnail.jpg" alt="">
+                    </div>
+                </div>
+                <!-- Cart Info -->
+                <div class="px-10 pb-10">
+                    <span class="brandTitle text-primary font-bold tracking-wide uppercase">sneaker company</span>
+                    <h2 class="title text-5xl capitalize font-bold m-0 py-5">fall limited edition sneakers</h2>
+                    <p class="text-base text-dark-grey-blue capitalize max-w-[75ch] m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta aperiam distinctio unde perspiciatis similique, quae provident tenetur vitae minima quam.</p>
+                    <!-- Product Price -->
+                    <div class="flex items-center justify-between py-5">
+                        <div class="flex items-center gap-10">
+                            <h4 class="price text-4xl capitalize text-black font-bold m-0">$125.00</h4>
+                            <span class="discount text-primary text-xl bg-secondary font-bold p-2">50%</span>
+                        </div>
+                        <span class="text-grey-blue line-through">$250.00</span>
+                    </div>
+                    <!-- Product Quantity -->
+                    <ul class="list-none flex items-center justify-between px-5">
+                        <li><button class="decrease bg-transparent"><img src="assets/img/icon-minus.svg" alt=""></button></li>
+                        <li><span class="quantity inline-block text-center text-2xl font-bold">1</span></li>
+                        <li><button class="increase bg-transparent"><img src="assets/img/icon-plus.svg" alt=""></button></li>
+                    </ul>
+                    <button class="addToCart w-full block bg-primary mt-5 py-5 rounded-lg text-white capitalize text-lg font-semibold shadow-primary shadow-md hover:shadow-lg hover:shadow-primary"><img class="brightness-200 mr-2.5" src="assets/img/icon-cart.svg" alt=""> add to card</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linking CSS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

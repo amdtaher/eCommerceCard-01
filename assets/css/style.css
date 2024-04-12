@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap')
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Custom Styles */
+body{
+    font-family: 'Kumbh Sans', sans-serif;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s linear;
+}
+img{
+    max-width: 100%;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
