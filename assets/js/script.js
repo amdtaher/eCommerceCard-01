@@ -91,6 +91,7 @@ addCart.addEventListener('click', addCartSection);
 
 function addCartSection(){
     let cartImg = document.querySelector('#mainImage').src;
+    cartImg = 'assets/img/image-product-1.jpg';
     let title = document.querySelector('.title').innerText;
     let priceText = document.querySelector('.price').innerText;
     let price = parseFloat(priceText.replace('$', ''));
@@ -115,7 +116,7 @@ function addToCart(title, price, cartImg, quantity, total){
     <ul class="cartItem flex items-center justify-between">
     <li><img class="w-[60px] rounded-lg" src="${cartImg}" alt=""></li>
     <li>
-    <h4 class="text-base text-dark-grey-blue">${title}<br><span class="cartPrice">${price}</span> x <span class="cartQuantity">${quantity}</span> = <span class="cartTotal text-black text-lg font-bold">${total}</span></h4>
+    <h4 class="text-base text-dark-grey-blue font-bold">${title}<br><span class="cartPrice">${price}</span> x <span class="cartQuantity">${quantity}</span> = <span class="cartTotal text-black text-lg font-bold">${total}</span></h4>
     </li>
     <li><button class='deleteCart' href=""><img src="assets/img/icon-delete.svg" alt=""></button></li>
     </ul>`
@@ -142,6 +143,7 @@ function purchase(){
     let h4 = document.createElement('h4');
     h4.innerText = 'Your cart is empty';
     h4.style.textAlign = 'center';
+    h4.style.fontWeight = 'bold';
     h4.style.padding = '20px';
     cartAllItems.append(h4);
     sup.textContent = '';
@@ -155,15 +157,7 @@ let id = null;
 let pos = 0;
 menu.addEventListener('click', ()=>{
     setInterval(() => {
-        if(hamburger.style.left = '180px'){
-            clearInterval(id);
-        }else{
-            pos++;
-            hamburger.style.display = 'block';
-            hamburger.style.opacity = '1';
-            hamburger.style.left = '180px';
-            hamburger.style.transition = '3s';
-        }
+
     }, 2000);
 })
 close.addEventListener('click', ()=>{

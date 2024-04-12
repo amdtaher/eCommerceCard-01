@@ -27,14 +27,6 @@
 <body class="m-0 p-0">
     <!-- Navigation Bar Area -->
     <header class="py-5 px-5 relative">
-        <!-- Hamburger -->
-            <ul class="hamburger hidden  opacity-0 text-white bg-black p-10 absolute top-0 -left-48 w-1/4 h-dvh m-0 z-10 duration-300 ease-linear">
-                <li><a class="text-white" href="">home</a></li>
-                <li><a class="text-white" href="">home</a></li>
-                <li><a class="text-white" href="">home</a></li>
-                <li><a class="text-white" href="">home</a></li>
-                <li><span class="close absolute top-0 right-0 p-5 text-white cursor-pointer" href="">X</span></li>
-            </ul>
         <div class="container mx-auto">
             <!-- Navbar -->
             <div class="flex items-center justify-between relative">
@@ -47,23 +39,24 @@
                 <div class="flex items-center gap-8">
                     <button id="cartButton" href=""><img class="rounded-none" src="assets/img/icon-cart.svg" alt=""><sup id="sup" class="text-base font-bold text-primary p-1"></sup></button>
                     <button id="avatar" href=""><img class="w-[50px] rounded-none" src="assets/img/image-avatar.png" alt=""></button>
-                </div>
-                <!-- Cart Item -->
-                <div id="cart" class="hidden absolute top-20 left-0 right-0 bg-white p-7 rounded-xl capitalize z-10">
-                    <h4 class="text-xl font-bold pb-3 m-0">cart</h4>
-                    <div class="cartAllItems">
-                        <!-- Single Cart -->
-                        <ul class="cartItem flex items-center justify-between">
-                            <li><img class="w-[60px] rounded-lg" src="assets/img/image-product-1-thumbnail.jpg" alt=""></li>
-                            <li>
-                                <h4 class="text-base text-dark-grey-blue">fall puma limited edition shoe <br> $<span class="cartPrice">30</span> x <span class="cartQuantity">5</span> = <span class="cartTotal text-black text-lg font-bold"></span></h4>
-                            </li>
-                            <li><button class='deleteCart' href=""><img src="assets/img/icon-delete.svg" alt=""></button></li>
-                        </ul>
-                    </div>
-                    <button id="purchase" class="block w-full text-center bg-primary text-white rounded-xl border-none text-lg font-semibold py-3 mt-3">purchase</button>
-                </div>    
+                </div>   
             </div>
+            <!-- Hamburger -->
+            <ul class="hamburger hidden  opacity-0 text-white bg-black p-10 absolute top-0 -left-48 w-1/4 h-dvh m-0 z-10 duration-300 ease-linear">
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><a class="text-white" href="">home</a></li>
+                <li><span class="close absolute top-0 right-0 p-5 text-white cursor-pointer" href="">X</span></li>
+            </ul>
+            <!-- Cart Item -->
+            <div id="cart" class="hidden absolute top-20 left-0 right-0 bg-white p-7 rounded-xl capitalize z-10">
+                <h4 class="text-xl font-bold pb-5 mb-5 border-b-2">cart</h4>
+                <div class="cartAllItems">
+                    <!-- Single Cart -->
+                </div>
+                <button id="purchase" class="block w-full text-center bg-primary text-white rounded-xl border-none text-lg font-semibold py-3 mt-3">purchase</button>
+            </div> 
         </div>
     </header>
     <!-- Cart Area -->
