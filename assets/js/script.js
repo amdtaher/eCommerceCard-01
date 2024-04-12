@@ -18,6 +18,7 @@ imgs.forEach((img, index)=>{
         img.style.cursor = 'pointer';
         cartImg.src = arr[index];
         console.log('clicked');
+        img.padding = '50px'
     })
 })
 
@@ -103,9 +104,7 @@ function addCartSection(){
 function addToCart(title, price, cartImg, quantity, total){
     let cartCount = 0;
     let cart = document.querySelector('.cartAllItems');
-    let div = document.createElement('ul');
     let existingTitle = document.querySelectorAll('.cartItem h4');
-    cart.append(div);
     for(let item of existingTitle){
         if(item.innerText.includes(title)){
             alert('Item already has been Ordered!');
@@ -120,6 +119,9 @@ function addToCart(title, price, cartImg, quantity, total){
     </li>
     <li><button class='deleteCart' href=""><img src="assets/img/icon-delete.svg" alt=""></button></li>
     </ul>`
+    let div = document.createElement('div');
+    div.classList.add('hello');
+    cart.append(div);
     div.innerHTML = cartItemContent;
     let deletebtn = div.querySelector('.deleteCart');
     deletebtn.addEventListener('click', (e)=>{
@@ -151,15 +153,25 @@ function purchase(){
 
 // Hamburger
 let menu = document.querySelector('#menu');
+let overlay = document.querySelector('.overlay');
 let hamburger = document.querySelector('.hamburger');
 let close = document.querySelector('.close');
 let id = null;
 let pos = 0;
 menu.addEventListener('click', ()=>{
-    setInterval(() => {
-
-    }, 2000);
+    overlay.style.display = 'block';
+    hamburger.style.display = 'flex';
+    overlay.style.opacity = '1';
+    hamburger.style.opacity = '1';
 })
 close.addEventListener('click', ()=>{
+    overlay.style.display = 'none';
     hamburger.style.display = 'none';
+    overlay.style.opacity = '0';
+    hamburger.style.opacity = '0';
 })
+
+// Empty
+// let em = document.querySelector('.empty');
+// let cartAllItem = document.querySelector('.cartAllItems');
+// let cartItem = cartAllItem.querySelector('.hello');
