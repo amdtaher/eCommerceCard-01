@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                colors: {
+                    'primary': 'hsl(26, 100%, 55%)',
+                    'secondary': 'hsl(25, 100%, 94%)',
+                    'dark-blue': 'hsl(220, 13%, 13%)',
+                    'dark-grey-blue': 'hsl(219, 9%, 45%)',
+                    'grey-blue': 'hsl(220, 14%, 75%)',
+                    'light-grey-blue': 'hsl(223, 64%, 98%)',
+                    'white': 'hsl(0, 0%, 100%)',
+                    'black': 'hsl(0, 0%, 0%)' }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="m-0 p-0">
     <!-- Navigation Bar Area -->
@@ -82,7 +100,7 @@
                         <li><span class="quantity inline-block text-center text-2xl font-bold">1</span></li>
                         <li><button class="increase bg-transparent"><img src="assets/img/icon-plus.svg" alt=""></button></li>
                     </ul>
-                    <button class="addToCart w-full block bg-primary mt-5 py-5 rounded-lg text-white capitalize text-lg font-semibold shadow-primary shadow-md hover:shadow-lg hover:shadow-primary"><img class="brightness-200 mr-2.5" src="assets/img/icon-cart.svg" alt=""> add to card</button>
+                    <button class="addToCart w-full flex justify-center items-center bg-primary mt-5 py-3 rounded-lg text-white capitalize text-lg font-semibold shadow-primary shadow-md duration-300 hover:shadow-lg hover:shadow-primary"><img class="brightness-200 mr-2.5" src="assets/img/icon-cart.svg" alt=""> add to card</button>
                 </div>
             </div>
         </div>
