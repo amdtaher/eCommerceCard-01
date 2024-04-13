@@ -1,27 +1,111 @@
+// Hamburger
+let menu = document.querySelector('#menu');
+let overlay = document.querySelector('.overlay');
+let hamburger = document.querySelector('.hamburger');
+let close = document.querySelector('.close');
+menu.addEventListener('click', ()=>{
+    overlay.style.display = 'block';
+    hamburger.style.display = 'flex';
+    overlay.style.opacity = '1';
+    hamburger.style.opacity = '1';
+})
+close.addEventListener('click', ()=>{
+    overlay.style.display = 'none';
+    hamburger.style.display = 'none';
+    overlay.style.opacity = '0';
+    hamburger.style.opacity = '0';
+})
+// --End--
+
 // Product Items Quantity and Add to Cart
-let increase = document.querySelector( '.increase' );
-let decrease = document.querySelector( '.decrease' );
+let increase = document.querySelector('.increase');
+let decrease = document.querySelector('.decrease');
 let quantity = document.querySelector('.quantity');
-let button = document.querySelector( '.addTocart' );
 let val = parseInt(quantity.textContent);
 
-// Change Images
+// Change Main Image by Thumbnail Images Click
+let popImgs = document.querySelectorAll('.thumbPopImages > img');
 let imgs = document.querySelectorAll('.thumbImages > img');
-let arr = ['assets/img/image-product-1.jpg',
-            'assets/img/image-product-2.jpg',
-            'assets/img/image-product-3.jpg',
-            'assets/img/image-product-4.jpg'];
-imgs.forEach((img, index)=>{
-    img.style.width = '100px';
-    img.addEventListener('click', ()=>{
-        let cartImg = document.querySelector('#mainImage');
+let mainImage = document.querySelector('.mainImage');
+let mainImages = document.querySelectorAll('.mainImage');
+let arr = [
+    'assets/img/image-product-1.jpg',
+    'assets/img/image-product-2.jpg',
+    'assets/img/image-product-3.jpg',
+    'assets/img/image-product-4.jpg'
+];
+// Thumbnail Clicks
+imgs.forEach((img, index) => {
+    img.addEventListener('click', () => {
         img.style.cursor = 'pointer';
-        cartImg.src = arr[index];
-        console.log('clicked');
-        img.padding = '50px'
-    })
+        mainImages.forEach((mainImage) => {
+            mainImage.src = arr[index];
+        });
+        console.log('Thumbnail clicked');
+    });
+});
+// Popup Thumbnail Clicks
+popImgs.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        img.style.cursor = 'pointer';
+        mainImages.forEach((mainImage) => {
+            mainImage.src = arr[index];
+        });
+        console.log('Thumbnail clicked');
+    });
+});
+// --End--
+
+// Popup Controls and Changes
+
+// Popup Open or Show
+let popup = document.querySelector('.imgPopup');
+let bannerImg = document.querySelector('.bannerImg');
+function openPopup(){
+    popup.style.display = 'flex';
+    popup.style.opacity = '1';
+}
+if (window.innerWidth) {
+    bannerImg.addEventListener('click', openPopup);
+}
+
+// Popup Close or Hide
+let closePopup = document.querySelector('.closePopup');
+closePopup.addEventListener('click',()=>{
+    popup.style.display = 'none';
+    popup.style.opacity = '0';
 })
 
+// Next Item
+let nextButtons = document.querySelectorAll('.next');
+nextButtons.forEach((nextButton) => {
+    let i = 0;
+    nextButton.addEventListener('click', function() {
+        mainImage.src = arr[i];
+        i++;
+        if(i >= arr.length) { 
+            i = 0; 
+        }
+        console.log('next clicked');
+    });
+});
+
+// Prev Item
+let prevButtons = document.querySelectorAll('.prev');
+prevButtons.forEach((prevButton) => {
+    let i = arr.length - 1;
+    prevButton.addEventListener('click', function() {
+        mainImage.src = arr[i];
+        i--;
+        if(i < 0) { 
+            i = arr.length - 1; 
+        }
+        console.log('prev clicked');
+    });
+});
+// --End--
+
+// Quantity Selection
 
 // Increase Item
 increase.addEventListener( 'click', function() {
@@ -41,15 +125,13 @@ decrease.addEventListener( 'click', function() {
         singleCart();
     }
 })
+// --End--
 
 // Cart Section
 let cartButton = document.querySelector( '#cartButton' );
 let sup = document.querySelector( '#sup' );
 let cart = document.querySelector( '#cart' );
 let deleteCarts = document.querySelectorAll( '.deleteCart' );
-let cartQuantity = document.querySelector( '.cartQuantity' );
-let cartPrice = document.querySelector( '.cartPrice' );
-let cartTotal = document.querySelector( '.cartTotal' );
 
 // Cart Icon Click
 cartButton.addEventListener('click', () => {
@@ -61,15 +143,8 @@ cartButton.addEventListener('click', () => {
         console.log('Cart Item Visible');
     }
 })
-// Delete cart
-deleteCarts.forEach(deleteCart=>{
-    deleteCart.addEventListener('click', ()=>{
-        let cartItem = deleteCart.closest('.cartItem');
-        cartItem.remove();
-        console.log('Cart Item deleted');
-    })
-})
-// Single Cart Item
+
+// Creating Single Cart Item
 let singleCart = () => {
     let cartItems = document.querySelectorAll('.cartItem');
     // Loop through each cart item
@@ -91,7 +166,7 @@ let addCart = document.querySelector('.addToCart');
 addCart.addEventListener('click', addCartSection);
 
 function addCartSection(){
-    let cartImg = document.querySelector('#mainImage').src;
+    let cartImg = document.querySelector('.mainImage').src;
     cartImg = 'assets/img/image-product-1.jpg';
     let title = document.querySelector('.title').innerText;
     let priceText = document.querySelector('.price').innerText;
@@ -103,7 +178,7 @@ function addCartSection(){
 }
 function addToCart(title, price, cartImg, quantity, total){
     let cartCount = 0;
-    let cart = document.querySelector('.cartAllItems');
+    let carts = document.querySelector('.cartAllItems');
     let existingTitle = document.querySelectorAll('.cartItem h4');
     for(let item of existingTitle){
         if(item.innerText.includes(title)){
@@ -121,17 +196,28 @@ function addToCart(title, price, cartImg, quantity, total){
     </ul>`
     let div = document.createElement('div');
     div.classList.add('hello');
-    cart.append(div);
+    carts.append(div);
     div.innerHTML = cartItemContent;
     let deletebtn = div.querySelector('.deleteCart');
     deletebtn.addEventListener('click', (e)=>{
         e.preventDefault();
         div.remove();
         sup.textContent = '';
+        toggleEmptyCartMessage();
     })
+    toggleEmptyCartMessage();
     cartCount++;
     sup.textContent = cartCount;
 }
+
+// Delete Single Cart
+deleteCarts.forEach(deleteCart=>{
+    deleteCart.addEventListener('click', ()=>{
+        let cartItem = deleteCart.closest('.cartItem');
+        cartItem.remove();
+        console.log('Cart Item deleted');
+    })
+})
 
 // Purchase Done
 let purchasebtn = document.querySelector('#purchase');
@@ -142,36 +228,30 @@ function purchase(){
     while(cartAllItems.hasChildNodes()){
         cartAllItems.removeChild(cartAllItems.firstChild);
     }
-    let h4 = document.createElement('h4');
-    h4.innerText = 'Your cart is empty';
-    h4.style.textAlign = 'center';
-    h4.style.fontWeight = 'bold';
-    h4.style.padding = '20px';
-    cartAllItems.append(h4);
+    cartAllItems.append(emptyCartMessage);
+    toggleEmptyCartMessage();
     sup.textContent = '';
 }
 
-// Hamburger
-let menu = document.querySelector('#menu');
-let overlay = document.querySelector('.overlay');
-let hamburger = document.querySelector('.hamburger');
-let close = document.querySelector('.close');
-let id = null;
-let pos = 0;
-menu.addEventListener('click', ()=>{
-    overlay.style.display = 'block';
-    hamburger.style.display = 'flex';
-    overlay.style.opacity = '1';
-    hamburger.style.opacity = '1';
-})
-close.addEventListener('click', ()=>{
-    overlay.style.display = 'none';
-    hamburger.style.display = 'none';
-    overlay.style.opacity = '0';
-    hamburger.style.opacity = '0';
-})
+// Initial setup: Create a h4 element for showing cart is empty
+let cartAllItems = document.querySelector('.cartAllItems');
+let emptyCartMessage = document.createElement('h4');
+emptyCartMessage.classList.add('nothing');
+emptyCartMessage.innerText = 'Your cart is empty';
+emptyCartMessage.style.textAlign = 'center';
+emptyCartMessage.style.fontWeight = 'bold';
+emptyCartMessage.style.padding = '20px';
+cartAllItems.append(emptyCartMessage);
 
-// Empty
-// let em = document.querySelector('.empty');
-// let cartAllItem = document.querySelector('.cartAllItems');
-// let cartItem = cartAllItem.querySelector('.hello');
+// Function to toggle the visibility of the empty cart message
+function toggleEmptyCartMessage() {
+    if (cartAllItems.children.length <= 1) {
+        emptyCartMessage.style.display = 'block';
+    } else {
+        emptyCartMessage.style.display = 'none';
+    }
+    return;
+}
+
+
+
